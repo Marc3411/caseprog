@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caseprog
+  labels:
+    app: caseprog
 spec:
   replicas: 2
   selector:
@@ -14,7 +16,7 @@ spec:
     spec:
       containers:
       - name: caseprog
-      image: 10.2.1.114:32000/caseprog:v1
-      imagePullPolicy: Always
+        image: localhost/caseprog:v1
+        imagePullPolicy: Never
         ports:
         - containerPort: 5000
