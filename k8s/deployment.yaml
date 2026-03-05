@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caseprog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: caseprog
+  template:
+    metadata:
+      labels:
+        app: caseprog
+    spec:
+      containers:
+      - name: caseprog
+        image: 10.2.1.114:32000/caseprog:v1
+        ports:
+        - containerPort: 5000
