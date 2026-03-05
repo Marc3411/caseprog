@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dansk Net Løsning - Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .service {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        .service:last-child {
+            border-bottom: none;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: white;
+        }
+        .status.ok {
+            background-color: #4CAF50;
+        }
+        .status.nede {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dansk Net Løsning</h1>
+        <h2>Tjenestestatus</h2>
+        {% for service_name, status in services.items() %}
+        <div class="service">
+            <span>{{ service_name }}</span>
+            <span class="status {{ status.lower() }}">{{ status }}</span>
+        </div>
+        {% if service_name in messages %}
+        <div class="service note">
+            <em>{{ messages[service_name] }}</em>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
