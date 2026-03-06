@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - name: caseprog
-        image: localhost:32000/caseprog:v1
+        image: localhost/caseprog:v1
+        imagePullPolicy: Never
         ports:
         - containerPort: 5000
